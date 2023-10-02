@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .error-wrapper {
+        background-color: #292929;
+        height: 100%;
+        padding-top: 10%;
+    }
+
+    .error-wrapper .error-container {
+        -webkit-transform: skew(0deg, -10deg);
+        -moz-transform: skew(0deg, -10deg);
+        -o-transform: skew(0deg, -10deg);
+        -ms-transform: skew(0deg, -10deg);
+        transform: skew(0deg, -10deg);
+        background-color: #1dbc9c;
+        padding: 60px;
+    }
+
+    .error-wrapper .error-container .error {
+        -webkit-transform: skew(0deg, 10deg);
+        -moz-transform: skew(0deg, 10deg);
+        -o-transform: skew(0deg, 10deg);
+        -ms-transform: skew(0deg, 10deg);
+        transform: skew(0deg, 10deg);
+        margin: 0 auto;
+        text-align: center;
+        width: 350px;
+    }
+
+    .error-wrapper .error-container .error .error-title {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+
+    .error-wrapper .error-container .error .error-number {
+        font-size: 50px;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-shadow: 0 3px 0 #292929, 0 14px 10px rgba(0, 0, 0, .15), 0 24px 2px rgba(0, 0, 0, .1), 0 34px 30px rgba(0, 0, 0, .1);
+    }
+
+    .error-wrapper .error-container .error .error-description {
+        font-size: 14px;
+        font-weight: 300;
+        padding: 0 40px;
+    }
+
+    .error-wrapper .error-container .error .error-or {
+        height: 20px;
+        margin: 30px 0 10px;
+        position: relative;
+        text-align: center;
+    }
+
+    .error-wrapper .error-container .error .error-or .or-line {
+        background-color: #169077;
+        height: 1px;
+        left: 40px;
+        position: absolute;
+        right: 40px;
+        top: 10px;
+    }
+
+    .error-wrapper .error-container .error .error-or .or {
+        -lh-property: 0;
+        left: -webkit-calc(50% - 30px);
+        left: -moz-calc(50% - 30px);
+        left: calc(50% - 30px);
+        background-color: #1dbc9c;
+        height: 20px;
+        margin: 0 auto;
+        position: absolute;
+        text-transform: uppercase;
+        top: 2px;
+        width: 60px;
+    }
+
+    .error-wrapper .error-container .error .error-textbox {
+        padding: 0 40px;
+    }
+
+    .error-wrapper .error-container .error .error-textbox .form-control {
+        background-color: #292929;
+        border: 0;
+    }
+
+    .error-wrapper .error-container .error .error-submit {
+        padding: 0 40px;
+    }
+
+    .error-wrapper .error-container .error .error-submit input {
+        font-size: 13px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .error-wrapper .error-container .error .error-actions {
+        display: block;
+        height: 40px;
+        list-style: none;
+        padding: 5px;
+    }
+
+    .error-wrapper .error-container .error .error-actions>li {
+        display: inline-block;
+        float: left;
+        width: 33%;
+    }
+
+    .error-wrapper .error-container .error .error-actions>li a i {
+        color: #292929;
+        font-size: 32px;
+    }
+
+    .error-wrapper .error-container.error-500 {
+        background-color: #ffc107;
+    }
+
+    .error-wrapper .error-container.error-500 .error .error-or .or-line {
+        background-color: #d39e00;
+    }
+
+    .error-wrapper .error-container.error-500 .error .error-or .or {
+        background-color: #ffc107;
+    }
+
+    .error-wrapper .error-container.error-401 {
+        background-color: #34b5dc;
+    }
+
+    .error-wrapper .error-container.error-401 .error .error-or .or-line {
+        background-color: #2198bd;
+    }
+
+    .error-wrapper .error-container.error-401 .error .error-or .or {
+        background-color: #34b5dc;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .error-wrapper {
+            padding-top: 5%;
+        }
+
+        .error-wrapper .error-container {
+            -webkit-transform: skew(0deg, -5deg);
+            -moz-transform: skew(0deg, -5deg);
+            -o-transform: skew(0deg, -5deg);
+            -ms-transform: skew(0deg, -5deg);
+            transform: skew(0deg, -5deg);
+        }
+
+        .error-wrapper .error-container .error {
+            -webkit-transform: skew(0deg, 5deg);
+            -moz-transform: skew(0deg, 5deg);
+            -o-transform: skew(0deg, 5deg);
+            -ms-transform: skew(0deg, 5deg);
+            transform: skew(0deg, 5deg);
+            width: auto;
+        }
+    }
+
+    /* Additional styles for the custom div */
+    .custom-div {
+        border: 2px solid blue;
+        padding: 20px;
+        margin: 20px;
+        background-color: white;
+        display: flex; /* Add this to use flexbox layout */
+        align-items: center; /* Center content vertically */
+        animation-name: fadeIn;
+        animation-duration: 2s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .custom-div img {
+        max-width: 50%; /* Adjust the width as needed */
+        height: auto;
+        margin-left: 20px; /* Move the image to the right side */
+    }
+
+    .custom-div p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+       /* Footer Styles */
+       .footer {
+        background-color: #292929;
+        color: white;
+        padding: 40px 0;
+    }
+
+    .footer-icons {
+        font-size: 24px;
+        margin-right: 20px;
+        color: white;
+        transition: color 0.3s;
+    }
+
+    .footer-icons:hover {
+        color: #1dbc9c;
+    }
+
+    .footer-text {
+        margin-top: 20px;
+    }
+
+    /* Add animation to the footer */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .fadeIn {
+        animation-name: fadeIn;
+        animation-duration: 2s;
+    }
+     /* Style for the social media icons */
+     .social-icons {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Style for the icons on hover */
+        .social-icons a:hover {
+            color: #1dbc9c;
+        }
+        /* Add your existing styles here */
+
+        /* Footer Styles */
+        .footer {
+            background-color: #292929;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-icons {
+            font-size: 24px;
+            margin-right: 20px;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .footer-icons:hover {
+            color: #1dbc9c;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+        }
+
+        /* Add animation to the footer */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 2s;
+        }
+
+        /* Style for the social media icons */
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Style for the icons on hover */
+        .social-icons a:hover {
+            color: #1dbc9c;
+        }
+            /* Add your existing styles here */
+
+        /* Footer Styles */
+        .footer {
+            background-color:black; /* Yellow background color */
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-icons {
+            font-size: 24px;
+            margin-right: 20px;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .footer-icons:hover {
+            color: #1dbc9c;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+        }
+
+        /* Add animation to the footer */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 2s;
+        }
+
+        /* Style for the social media icons */
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color:black;
+            font-size: 24px;
+        }
+
+        /* Style for the icons on hover */
+        .social-icons a:hover {
+            color:black;
+        }
+    </style>
+</head>
+<body>
+<div class="error-wrapper">
+    <div class="error-container error-500">
+        <div class="error">
+            <div class="error-title">
+                
+            </div>
+            <div class="error-number">
+                COASTAL WASTE
+            </div>
+            <div class="error-description">
+                proposed actionable challenge
+            </div>
+            <ul class="error-actions">
+                <li>
+                    <a href="">
+                        <i class="pe-7s-left-arrow" data-toggle="tooltip" title=""
+                           data-original-title="BACK"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="pe-7s-home" data-toggle="tooltip" title=""
+                           data-original-title="HOME"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="pe-7s-mail" data-toggle="tooltip" title=""
+                           data-original-title="CONTACT US"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Custom Div 1 -->
+        <div class="col-md-12 custom-div">
+            <img src="mcl2.0.jpg" alt="Image" class="img-fluid">
+            <p><strong>The Sustainable Savers' actionable challenge for 2023 is "COASTAL WASTE."
+                During their field study at Nungwi, they observed various types of waste, including plastic waste,
+                decomposable garbage, rubbish, and wastewater, which are often mixed together. Additionally, natural
+                factors such as monsoon winds and ocean temperature contribute to waste generation</strong>.</p>
+        </div>
+    </div>
+    <!-- Custom Div 2 -->
+    <div class="row">
+        <div class="col-md-12 custom-div">
+            <p><strong>Through the Observations  and engagement with local community and stakeholders  the evidence provide ground true on the  existence of different types of waste includes  garbage, plastics and rubbish, glasses, clothes waste, papers and other solid waste that are generated by the local community  through their activities them selves and tourists activities. The exitance of the wastes affect the human health and environmental effects. After gathering evidence of observation  and data, we seek to address potential solutions toward the  challenges posed by coastal waste issues.
+                .</strong> </p>
+            <img src="g3.jpeg" alt="Image" class="img-fluid">
+        </div>
+    </div>
+</div>
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Social Links -->
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-text">
+                &copy; 2023 Sustainable Savers. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
